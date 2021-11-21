@@ -1,0 +1,10 @@
+<nb-card>
+  <nb-card-header>
+    Raw Materials List
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="rawMaterials" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

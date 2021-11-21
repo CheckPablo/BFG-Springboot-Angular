@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>Place Order</nb-card-header>
+      <nb-card-body>
+        <input type="text" #orderNo nbInput fullWidth placeholder="Order Number">
+        <div class="full-name-inputs">
+          <input nbInput fullWidth  placeholder="Date Placed" [nbDatepicker]="datePlaced">
+          <nb-datepicker #datePlaced></nb-datepicker>
+          <input nbInput fullWidth placeholder="Date Expected" [nbDatepicker]="dateExpected">
+          <nb-datepicker #dateExpected></nb-datepicker>
+        </div>
+        <input type="text" nbInput fullWidth shape="rectangle" placeholder="Supplier">
+        <input type="text" nbInput fullWidth shape="semi-round" placeholder="Unit">
+        <input type="text" nbInput fullWidth shape="round" placeholder="Quantity">
+        <input type="text" nbInput ng placeholder="Total Amount" disabled/>
+        <textarea rows="5" nbInput fullWidth shape="round"  placeholder="Order Description"></textarea>
+       <button style="background: #3366ff;color:white;"  (click)="ShowRawMaterials(orderNo)" nbButton>Show Raw Materials</button>
+      </nb-card-body>
+
+    </nb-card>
+
+    <!--<nb-card>
+      <nb-card-header>
+        Raw Materials List
+      </nb-card-header>
+
+      <nb-card-body>
+        <ng2-smart-table [settings]="settings" [source]="rawMaterials" (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>-->
+  </div>
+
+</div>
+
