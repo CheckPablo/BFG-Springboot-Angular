@@ -1,0 +1,258 @@
+﻿@model Entities.Models.Quotation
+@{
+    ViewData["Title"] = "CreateEditQuotations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CreateEditQuotations</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card" style="font-family:'Times New Roman'">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">New Requisition</h4>
+                </div>
+
+                <div class="card-body">
+                    <form enctype="multipart/form-data" asp-action="Create" class="form-inline" autocomplete="off">
+                        <div class="row">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="QuotationId" class="bmd-label-floating">Requisition Title</label>
+                                    <input asp-for="QuotationId" type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="SupplierId" class="control-label"></label>
+                                    <input asp-for="SupplierId" class="form-control" />
+                                    <span asp-validation-for="SupplierId" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="Item" class="control-label"></label>
+                                    <input asp-for="Item" class="form-control" />
+                                    <span asp-validation-for="Item" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="ItemDescription" class="control-label"></label>
+                                    <input asp-for="ItemDescription" class="form-control" />
+                                    <span asp-validation-for="ItemDescription" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="UnitPrice" class="control-label"></label>
+                                    <input asp-for="UnitPrice" class="form-control" />
+                                    <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="Total" class="control-label"></label>
+                                    <input asp-for="Total" class="form-control" />
+                                    <span asp-validation-for="Total" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="BillToAddress" class="control-label"></label>
+                                    <input asp-for="BillToAddress" class="form-control" />
+                                    <span asp-validation-for="BillToAddress" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="DateCreated" class="control-label"></label>
+                                    <input asp-for="DateCreated" class="form-control" />
+                                    <span asp-validation-for="DateCreated" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="DateUpdated" class="control-label"></label>
+                                    <input asp-for="DateUpdated" class="form-control" />
+                                    <span asp-validation-for="DateUpdated" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="DateCreated" class="control-label">Date Created</label>
+                                    <input asp-for="DateCreated" class="form-control" />
+                                    <span asp-validation-for="DateCreated" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="TermsAndContions" class="control-label"></label>
+                                    <input asp-for="TermsAndContions" class="form-control" />
+                                    <span asp-validation-for="TermsAndContions" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="SpecialNotesAndInstructions" class="control-label"></label>
+                                    <input asp-for="SpecialNotesAndInstructions" class="form-control" />
+                                    <span asp-validation-for="SpecialNotesAndInstructions" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="SubTotal" class="control-label"></label>
+                                    <input asp-for="SubTotal" class="form-control" />
+                                    <span asp-validation-for="SubTotal" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="TaxRate" class="control-label"></label>
+                                    <input asp-for="TaxRate" class="form-control" />
+                                    <span asp-validation-for="TaxRate" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="TotalTaxedAmount" class="control-label"></label>
+                                    <input asp-for="TotalTaxedAmount" class="form-control" />
+                                    <span asp-validation-for="TotalTaxedAmount" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="QuotationName" class="control-label"></label>
+                                    <input asp-for="QuotationName" class="form-control" />
+                                    <span asp-validation-for="QuotationName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="SupplierPhoneNumber" class="control-label"></label>
+                                    <input asp-for="SupplierPhoneNumber" class="form-control" />
+                                    <span asp-validation-for="SupplierPhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="SupplierAddress" class="control-label"></label>
+                                    <input asp-for="SupplierAddress" class="form-control" />
+                                    <span asp-validation-for="SupplierAddress" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="SupplierFax" class="control-label"></label>
+                                    <input asp-for="SupplierFax" class="form-control" />
+                                    <span asp-validation-for="SupplierFax" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="SupplierEmail" class="control-label"></label>
+                                    <input asp-for="SupplierEmail" class="form-control" />
+                                    <span asp-validation-for="SupplierEmail" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="Total" class="control-label">Total</label>
+                                    <input asp-for="Total" class="form-control" />
+                                    <span asp-validation-for="Total" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div id="uploadControls">
+
+                                    <label asp-for="@Model.FormFile">
+                                        Upload Your File
+                                    </label>
+                                    <input asp-for="@Model.FormFile" type="file" />
+
+
+                                </div>
+                                <ul id="uploadResults"></ul>
+                            </div>
+
+                            <table border="1" cellpadding="10">
+                            <tr>
+                                <th>Quantity</th>
+                                <th>quantity nu</th>
+                                <th>Shipping Date</th>
+                                <th>Shipped To</th>
+                            </tr>
+                            <tr>
+                                <td>Customer ID :</td>
+                                <td>CustomerID</td>
+                            </tr>
+                            <tr>
+                                <td>Company Name :</td>
+                                <td>CompanyName</td>
+                            </tr>
+                            <tr>
+                                <td>Contact Name :</td>
+                                <td>ContactName</td>
+                            </tr>
+                            <tr>
+                                <td>Country :</td>
+                                <td>Country</td>
+                            </tr>
+                            </table>
+
+                            <div>
+                                <button type="submit" name="action" value="Save" class="btn btn-primary pull-right">Save</button>
+                            </div>
+                            <div style="width:100px">
+
+                            </div>
+                            <div>
+                                <button type="submit" name="action" value="Submit" class="btn btn-primary pull-right">Submit</button>
+                            </div>
+                            <div style="width:100px">
+
+                            </div>
+                            <div>
+                                <button type="submit" name="action" value="Cancel" class="btn btn-primary pull-right">Cancel</button>
+                            </div>
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

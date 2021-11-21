@@ -1,0 +1,385 @@
+﻿@using Entities.Models
+@model Entities.Models.Supplier;
+
+
+
+
+@{
+    //var requisitionDetails = ViewData["QualificationName"];
+    var Req = (Requisition)ViewData["requisitionDetails"];
+    var ssd = (Supplier)ViewData["selectedSupplierDetails"];
+    //ViewData["Title"] = "SupplierSearchDetails";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+   
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <link rel="apple-touch-icon" sizes="76x76" href="~/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/assets/demo/demo.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/assets/demo/demo.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+    @*<link href="~/assets/demo/demo.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+
+
+
+</head>
+<body>
+    <div class="content">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card" style="font-family:'Times New Roman'">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Supplier Review For RFQ</h4>
+                        </div>
+
+                        <div class="card-body">
+                            @if (ssd != null)
+                            {
+
+
+                                <div class="row">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="SupplierName" class="bmd-label-floating"><b>Supplier Name</b></label>
+                                            <label asp-for="SupplierName" class="bmd-label-floating">@ssd.SupplierName</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="StreetName" class="control-label"><b>Address</b></label><br />
+                                            <label asp-for="StreetName" class="control-label">@ssd.StreetName</label>
+                                            <label asp-for="StreetName" class="control-label">@ssd.BuildingName</label>
+                                            <label asp-for="Surburb" class="control-label">@ssd.Surburb</label>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="ContactPersonEmail" class="control-label"><b>Contact Email</b></label>
+                                            <label asp-for="ContactPersonEmail" class="control-label">@ssd.ContactPersonEmail</label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                //HERE
+                                <div class="row">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="SupplierName" class="bmd-label-floating"><b>Registration Number</b></label>
+                                            <label asp-for="SupplierName" class="bmd-label-floating">@ssd.RegistrationNo</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="StreetName" class="control-label"><b>VAT Number</b></label><br />
+                                            @*<label asp-for="StreetName" class="control-label">@ssd.StreetName</label>*@
+                                            <label asp-for="StreetName" class="control-label">@ssd.VatregistrationNo</label>
+                                            @*<label asp-for="Surburb" class="control-label">@ssd.Surburb</label>*@
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="ContactPersonEmail" class="control-label"><b>BEE</b></label>
+                                            <label asp-for="ContactPersonEmail" class="control-label">@ssd.Bbbeeid</label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <form method="post" asp-controller="Supplier" asp-action="RequisitionToSupplier">
+                                    <div class="input-group">
+                                        <input id="searchTerm" class="form-control" type="text" name="reqNumber" placeholder="Enter Requisition number">
+
+                                        <div class="input-group-append">
+                                            <button id="searchForRequisition" class="btn btn-primary" type="submit">
+                                                Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+
+
+                            else if (ssd == null && @Model == null)
+                            {
+
+
+                                <div class="row">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            @*<label asp-for="SupplierName" class="bmd-label-floating">Supplier Name</label>*@
+                                            <label asp-for="SupplierName" class="bmd-label-floating">@ssd.SupplierName</label>
+                                            @*<input asp-for="SupplierName" type="text" class="form-control">*@
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="StreetName" class="control-label">Address</label>
+
+                                            @*<input asp-for="StreetName" class="form-control" />*@
+                                            @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="StreetName" class="control-label">Address</label>
+                                            <label asp-for="StreetName" class="control-label">@ssd.BuildingName</label>
+                                            <label asp-for="Surburb" class="control-label">@ssd.Surburb</label>
+                                            @*<input asp-for="StreetName" class="form-control" />*@
+                                            @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="ContactPersonEmail" class="control-label"><b>Contact Email</b></label>
+                                            <label asp-for="ContactPersonEmail" class="control-label">@ssd.ContactPersonEmail</label>
+                                            @*<input asp-for="ContactPersonEmail" class="form-control" />*@
+                                            @*<span asp-validation-for="QueriesEmail" class="text-danger"></span>*@
+                                        </div>
+                                    </div>Id 	Code 	Name
+                                </div>
+                                //HERE
+
+                                <div class="row">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            @*<label asp-for="SupplierName" class="bmd-label-floating">Supplier Name</label>*@
+                                            <label asp-for="SupplierName" class="bmd-label-floating">@ssd.RegistrationNo</label>
+                                            @*<input asp-for="SupplierName" type="text" class="form-control">*@
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="StreetName" class="control-label">Address</label>
+
+                                            @*<input asp-for="StreetName" class="form-control" />*@
+                                            @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="StreetName" class="control-label">VAT Number</label>
+                                            @*<label asp-for="StreetName" class="control-label">@ssd.BuildingName</label>*@
+                                            <label asp-for="Surburb" class="control-label">@ssd.VatregistrationNo</label>
+                                            @*<input asp-for="StreetName" class="form-control" />*@
+                                            @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="ContactPersonEmail" class="control-label"><b>BEE</b></label>
+                                            <label asp-for="ContactPersonEmail" class="control-label">@ssd.Bbbeeid</label>
+                                            @*<input asp-for="ContactPersonEmail" class="form-control" />*@
+                                            @*<span asp-validation-for="QueriesEmail" class="text-danger"></span>*@
+                                        </div>
+                                    </div>Id 	Code 	Name
+                                </div>
+
+                                <form method="post" asp-controller="Supplier" asp-action="RequisitionToSupplier">
+                                    <div class="input-group">
+                                        <input id="searchTerm" class="form-control" type="text" name="reqNumber" placeholder="Enter Requisition number">
+
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit">
+                                                Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            }
+
+                            else
+                            {
+
+
+                                <div class="row">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="SupplierName" class="bmd-label-floating"><b>Supplier Name</b></label>
+                                            <label asp-for="SupplierName" class="bmd-label-floating">@Model.SupplierName</label>
+                                            @*<input asp-for="SupplierName" type="text" class="form-control">*@
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="StreetName" class="control-label"><b>Address</b></label><br />
+                                            <label asp-for="StreetName" class="control-label">@Model.StreetName</label>
+                                            <label asp-for="StreetName" class="control-label">@Model.BuildingName</label>
+                                            <label asp-for="Surburb" class="control-label">@Model.Surburb</label>
+                                            @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="ContactPersonEmail" class="control-label"><b>Contact Email</b></label>
+                                            <label asp-for="ContactPersonEmail" class="control-label">@Model.ContactPersonEmail</label>
+                                            @*<span asp-validation-for="QueriesEmail" class="text-danger"></span>*@
+                                        </div>
+                                    </div>
+                                </div>
+
+                                //HERE
+
+
+                                <div class="row">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="SupplierName" class="bmd-label-floating"><b>Registration Number</b></label><br />
+                                            <label asp-for="SupplierName" class="bmd-label-floating">@Model.RegistrationNo</label>
+                                            @*<input asp-for="SupplierName" type="text" class="form-control">*@
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="StreetName" class="control-label"><b>VAT_No</b></label><br />
+                                            <label asp-for="StreetName" class="control-label">@Model.VatregistrationNo</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+                                            <label asp-for="ContactPersonEmail" class="control-label"><b>BEE</b></label><br />
+                                            <label asp-for="ContactPersonEmail" class="control-label">@Model.Bbbeeid</label>
+                                            @*<span asp-validation-for="QueriesEmail" class="text-danger"></span>*@
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <form method="post" asp-controller="Supplier" asp-action="RequisitionToSupplier">
+                                    <div class="input-group">
+                                        <input id="searchTerm" class="form-control" type="text" name="reqNumber" placeholder="Enter Requisition number">
+
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit">
+                                                Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <table>
+                @*<tr>
+                        <th>Id</th>
+                        <th>Code</th>
+                        <th>Name</th>
+                    </tr>*@
+                @if (Req != null)
+                {
+                    <p><b>Requisition Details</b></p>
+
+                    <div class="card-body">
+                        <form asp-action="SendRFQ" class="form-inline" autocomplete="off">
+                            <div class="row">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <input type="hidden" name="quoteReqI2d" asp-for="@Req.RequisitionNo" />
+                                        <label class="bmd-label-floating"><b>Item</b></label><br />
+                                        <label class="control-label">@Req.Item</label>
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+
+                                        <label class="bmd-label-floating"><b>Item Description</b></label><br />
+                                        <label class="control-label">@Req.ItemDescription</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+
+                                        <label class="bmd-label-floating"><b>Quantity</b></label><br />
+                                        <label class="control-label">@Req.Quantity</label>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Send RFQ" class="btn btn-primary" />
+                            </div>
+
+                        </form>
+                    </div>
+
+                }
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>
+@*<script>*@
+
+
+@*</script>onclick="myDisableButton()"
+searchForRequisition*@
+

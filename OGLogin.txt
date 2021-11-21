@@ -1,0 +1,346 @@
+@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "LogIn";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="~/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/vendor/bootstrap/css/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/vendor/bootstrap/css/bootstrap-reboot.css" rel="stylesheet" />
+    <link href="~/fonts/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/fonts/iconic/css/material-design-iconic-font.css" rel="stylesheet" />
+    <link href="~/vendor/animate/animate.css" rel="stylesheet" />
+    <link href="~/vendor/css-hamburgers/hamburgers.css" rel="stylesheet" />
+    <link href="~/vendor/animsition/css/animsition.css" rel="stylesheet" />
+    <link href="~/vendor/select2/select2.css" rel="stylesheet" />
+    <link href="~/vendor/daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="~/css/util.css" rel="stylesheet" />
+
+    <link href="~/css/main.css" rel="stylesheet" />
+    <script src="//code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+
+
+</head>
+<style>
+    body {
+        /* //background: #222D32;*/
+        background: #EAEFF2;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .login-box {
+        margin-top: 75px;
+        height: auto;
+        margin: auto;
+        /*   //background: #1A2226;*/
+        background-color: #e1edf2;
+        text-align: center;
+        box-shadow: 5px 10px 8px #888888;
+        background-position: left top;
+        background-repeat: repeat;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 25px;
+        /*box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);*/
+    }
+
+    @@font-face {
+        font-family: 'password';
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+    }
+
+    input.key {
+        font-family: 'password';
+        width: 465px;
+        height: 40px;
+    }
+
+    .placeholder {
+        height: 200px;
+        font-size: 80px;
+        margin-left: -19px;
+        width: 553px;
+        /*    line-height: 100px;*/
+        /*background: -webkit-linear-gradient(#27EF9F, #0DB8DE);*/
+        background-image: url('../assets/img/login.jpg');
+        /*  -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;*/
+    }
+
+    /* #placeholder {
+        background-image: url('../folder1/Images/banner.png');
+        height: 100px;
+
+    }*/
+
+    .login-title {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 30px;
+        letter-spacing: 2px;
+        margin-top: 15px;
+        font-weight: bold;
+        color: #ECF0F5;
+    }
+
+    .login-form {
+        margin-top: 25px;
+        text-align: left;
+    }
+
+    input[type=text] {
+        background-color: #ECF0F5;
+        border: none;
+        border-bottom: 2px solid #0DB8DE;
+        border-top: 0px;
+        border-radius: 0px;
+        /* font-weight: bold;*/
+        outline: 0;
+        margin-bottom: 20px;
+        padding-left: 0px;
+        color: #0DB8DE;
+    }
+
+    input[type=password] {
+        background-color: #ECF0F5;
+        border: none;
+        border-bottom: 2px solid #0DB8DE;
+        border-top: 0px;
+        border-radius: 0px;
+        /*  font-weight: bold;*/
+        outline: 0;
+        padding-left: 0px;
+        margin-bottom: 20px;
+        color: #0DB8DE;
+    }
+
+    .form-group {
+        margin-bottom: 40px;
+        outline: 0px;
+    }
+
+    .form-control:focus {
+        border-color: inherit;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-bottom: 2px solid #0DB8DE;
+        outline: 0;
+        background-color: #e1edf2;
+        color: #007bff;
+    }
+
+    input:focus {
+        outline: none;
+        box-shadow: 0 0 0;
+    }
+
+    label {
+        margin-bottom: 0px;
+    }
+
+    .form-control-label {
+        font-size: 10px;
+        color: #6C6C6C;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .btn-outline-primary {
+        border-color: #0DB8DE;
+        color: #0DB8DE;
+        border-radius: 0px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #0DB8DE;
+            right: 0px;
+        }
+
+    .login-btm {
+        float: left;
+    }
+
+    .login-button {
+        padding-right: 0px;
+        text-align: right;
+        margin-bottom: 25px;
+    }
+
+    .login-text {
+        text-align: left;
+        padding-left: 0px;
+        color: #A2A4A4;
+    }
+
+    .loginbttm {
+        padding: 0px;
+    }
+
+    #bodyBackGround {
+        /*   background-image: url('../assets/img/bckImageCenter.png');*/
+        background-image: url('../assets/img/bg4.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        /*    background-repeat: repeat;*/
+    }
+</style>
+<body >
+    @*<div class="row">
+        <div class="col-md-4">
+         <section>
+             <div class="container">
+                 <h1>jQuery AddInput Examples</h1>
+                 <form id="account" method="post" autocomplete="off">
+                     <div asp-validation-summary="All" class="text-danger"></div>
+                     <div class="form-group">
+                         <label asp-for="Input.Email"></label>
+                         <input data-addui='input' id='myInput' name='myInput' asp-for="Input.Email" type="text" placeholder="Password" class="form-control" />
+                         <span asp-validation-for="Input.Email" class="text-danger"></span>
+                     </div>
+                     <div class="form-group">
+                         <label asp-for="Input.Email"></label>
+                         <input data-addui='input' id='myInput' name='myInput' asp-for="Input.Password" type="text" placeholder="Password" class="form-control" />
+                         <span asp-validation-for="Input.Password" class="text-danger"></span>
+                     </div>
+                     <div class="form-group">
+                         <div class="checkbox">
+                             <label asp-for="Input.RememberMe">
+                                 <input asp-for="Input.RememberMe" />
+                                 @Html.DisplayNameFor(m => m.Input.RememberMe)
+                             </label>
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <button type="submit" class="btn btn-primary">LogIn</button>
+                     </div>
+                     </form>
+
+             </div>
+
+         </section>
+         </div>
+         </div>*@
+    @*<div class="col-md-4">*@
+    <section>
+        <form id="account" method="post" autocomplete="off">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                <div class="placeholder">
+                    @*<i class="fa fa-key" aria-hidden="true"></i>*@
+                </div>
+                @*<div class="col-lg-12 login-title">
+                        Login
+                    </div>*@
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        @*<form>*@
+                        <div class="form-group">
+                            <label class="form-control-label">USERNAME</label>
+                            @*<input type="text" class="form-control">*@
+                            <input type="text" asp-for="Input.Email" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">PASSWORD</label></br>
+                            <input type="text" asp-for="Input.Password" class="key" />
+                            @*<input type="password" class="form-control" i>*@
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" style="margin-left:auto;margin-right:auto;display:block;margin-top:22%;margin-bottom:0%">LOGIN</button>
+                        </div>
+
+                        <div class="col-lg-12 loginbttm">
+                            <div class="col-lg-6 login-btm login-text">
+                                <!-- Error Message -->
+                            </div>
+                            @*<div class="form-group">
+                                    <button type="submit" class="btn btn-primary">LOGIN</button>
+                                </div>*@
+                        </div>
+                        @*</form>*@
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+
+        </form>
+    </section>
+    <section>
+        <partial name="_ExternalAuthentication" />
+        <div class="txt1 text-center p-t-54 p-b-20">
+            <span>
+                Or LogIn Using
+            </span>
+        </div>
+
+        <div class="flex-c-m">
+            <a href="https://accounts.google.com/o/oauth2/v2/auth/identifier?response_type=code&client_id=914395842462-vhcn739ngl239cvb4gn656aaf7r7ki7m.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Flocalhost%3A44334%2Fsignin-google&scope=openid%20profile%20email&state=CfDJ8LxBjwqPIKlNjiMCzIDp5vWfZJ8nYJorrl-CWDe-o9PUv0fZlzYH_O78_9ksAv-RDwaAf5EUmCComUG2Oz0RRVltEHFf3lZWbKBJdGUr4jn6wbbQiv0oE31pZppptopIfD8dTIWlyhzS-fzQMyuq_giXsgqyZSEJ6-LE-PcRC5LKL7b2yoalc0VSP3wkCnL86iU6szf2vkPe15ZVtikWZQXJ_b7fbS5939qwPMrj_RQZl1BgsrJsC-5pGzeJxCiivY8EwNLGgtrQAuNqCuiAIOU&flowName=GeneralOAuthFlow" class="login100-social-item bg3">
+                <i class="fa fa-google"></i>
+            </a>
+            <a href="#" class="login100-social-item bg1">
+                <i class="fa fa-facebook"></i>
+            </a>
+
+            <a href="#" class="login100-social-item bg2">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </div>
+    </section>
+
+    @*<div class="col-md-6 col-md-offset-2">
+            <section>
+                <partial name="_ExternalAuthentication" />
+                <div class="txt1 text-center p-t-54 p-b-20">
+                    <span>
+                        Or LogIn Using
+                    </span>
+                </div>
+
+                <div class="flex-c-m">
+                    <a href="https://accounts.google.com/o/oauth2/v2/auth/identifier?response_type=code&client_id=914395842462-vhcn739ngl239cvb4gn656aaf7r7ki7m.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Flocalhost%3A44334%2Fsignin-google&scope=openid%20profile%20email&state=CfDJ8LxBjwqPIKlNjiMCzIDp5vWfZJ8nYJorrl-CWDe-o9PUv0fZlzYH_O78_9ksAv-RDwaAf5EUmCComUG2Oz0RRVltEHFf3lZWbKBJdGUr4jn6wbbQiv0oE31pZppptopIfD8dTIWlyhzS-fzQMyuq_giXsgqyZSEJ6-LE-PcRC5LKL7b2yoalc0VSP3wkCnL86iU6szf2vkPe15ZVtikWZQXJ_b7fbS5939qwPMrj_RQZl1BgsrJsC-5pGzeJxCiivY8EwNLGgtrQAuNqCuiAIOU&flowName=GeneralOAuthFlow" class="login100-social-item bg3">
+                        <i class="fa fa-google"></i>
+                    </a>
+                    <a href="#" class="login100-social-item bg1">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+
+                    <a href="#" class="login100-social-item bg2">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </div>
+            </section>
+        </div>*@
+    </div>
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/vendor/animsition/js/animsition.js"></script>
+    <script src="~/vendor/bootstrap/js/popper.js"></script>
+
+    <script src="~/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="~/vendor/select2/select2.js"></script>
+    <script src="~/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="~/vendor/countdowntime/countdowntime.js"></script>
+
+    <script src="~/js/main.js"></script>
+</body>
+</html>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

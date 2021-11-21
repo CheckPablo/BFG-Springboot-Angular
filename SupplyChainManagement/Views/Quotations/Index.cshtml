@@ -1,0 +1,168 @@
+﻿@model IEnumerable<Entities.Models.Quotation>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequisitionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillToAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillToName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateUpdated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TermsAndContions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialNotesAndInstructions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaxRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValidUntil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalTaxedAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuoteCreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuotationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierFax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierEmail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequisitionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillToAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillToName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateUpdated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TermsAndContions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialNotesAndInstructions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaxRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValidUntil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalTaxedAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuoteCreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuotationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierPhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierFax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierEmail)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.QuotationId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.QuotationId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.QuotationId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

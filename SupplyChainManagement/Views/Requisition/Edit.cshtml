@@ -1,0 +1,386 @@
+﻿@model Entities.Models.Requisition
+
+@{
+    Layout =   Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card" style="font-family:'Times New Roman'">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Edit Requisition</h4>
+                </div>
+
+                <div class="card-body">
+                    <form asp-action="Edit" class="form-inline" autocomplete="off">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="RequisitionId" />
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="RequisitionNo" class="control-label">Requisition No</label>
+                                <input asp-for="RequisitionNo" class="form-control" />
+                                <span asp-validation-for="RequisitionNo" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="RequisitionTitle" class="control-label">Requisition Title</label>
+                                <input asp-for="RequisitionTitle" class="form-control" />
+                                <span asp-validation-for="RequisitionTitle" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label>Requisition Type</label>
+                                <div style="width:100px">
+                                </div>
+                                <select asp-for="RequisitionTypeId" class="form-control" asp-items="ViewBag.RequisitionTypeId">
+                                    <option selected disabled>Select Requisition Type</option>
+                                </select>
+                                <span asp-validation-for="RequisitionTypeId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="DepartmentId" class="control-label"> Department Name</label>
+                                <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId">
+                                    <option selected disabled>Select Department</option>
+                                </select>
+                                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label>Contract Type</label>
+                                <div style="width:100px">
+                                </div>
+                                <select asp-for="ContractTypeId" class="form-control" asp-items="ViewBag.ContractTypeId">
+                                    <option selected disabled>Select Contract Type</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="ShippingMethodId" class="control-label">Shipping Method</label>
+                                <select asp-for="ShippingMethodId" class="form-control" asp-items="ViewBag.ShippingMethodId">
+                                    <option selected disabled>Select Shipping Method</option>
+                                </select>
+                                <span asp-validation-for="ShippingMethodId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="Motivation" class="control-label">Motivation</label>
+                                <input asp-for="Motivation" class="form-control" />
+                                <span asp-validation-for="Motivation" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="QueriesName" class="control-label">Queries Name</label>
+                                <input asp-for="QueriesName" class="form-control" />
+                                <span asp-validation-for="QueriesName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="QueriesPhone" class="control-label">Queries Phone</label>
+                                <input asp-for="QueriesPhone" class="form-control" />
+                                <span asp-validation-for="QueriesPhone" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="QueriesEmail" class="control-label">Queries Email</label>
+                                <input asp-for="QueriesEmail" class="form-control" />
+                                <span asp-validation-for="QueriesEmail" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="DateCreated" class="control-label">Date Created</label>
+                                <input asp-for="DateCreated" class="form-control" />
+                                <span asp-validation-for="DateCreated" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="CreatedBy" class="control-label">Created By</label>
+                                <input asp-for="CreatedBy" class="form-control" />
+                                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    Site Visit Required
+                                    <input id="SiteVisitRequired" class="form-check-input" type="checkbox" value="true" name="SiteVisitRequired">
+                                    <input type="hidden" value="false" name="SiteVisitRequired">
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="AttachmentPath" class="control-label">Attachment Path</label>
+                                <input asp-for="AttachmentPath" class="form-control" />
+                                <span asp-validation-for="AttachmentPath" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="AttachmentDescription" class="control-label">Attachment Description</label>
+                                <input asp-for="AttachmentDescription" class="form-control" />
+                                <span asp-validation-for="AttachmentDescription" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    Overwrite Existing Attachment
+                                    <input id="OverwriteExistingAttachment" class="form-check-input" type="checkbox" value="true" name="OverwriteExistingAttachment">
+                                    <input type="hidden" value="false" name="OverwriteExistingAttachment">
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    Attachment Visible To Supplier
+                                    <input id="AttachmentVisibleToSupplier" class="form-check-input" type="checkbox" value="true" name="AttachmentVisibleToSupplier">
+                                    <input type="hidden" value="false" name="AttachmentVisibleToSupplier">
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-check">
+
+                                <label class="form-check-label">
+                                    Approval Exception
+                                    <input id="ApprovalException" class="form-check-input" type="checkbox" value="true" name="ApprovalException">
+                                    <input type="hidden" value="false" name="ApprovalException">
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label>Classification</label>
+                                <div style="width:100px">
+                                </div>
+                                <select asp-for="ClassificationId" class="form-control" asp-items="ViewBag.ClassificationId">
+                                    <option selected disabled>Select Classification</option>
+                                </select>
+                                <span asp-validation-for="ClassificationId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    Service Item
+                                    <input id="ServiceItem" class="form-check-input" type="checkbox" value="true" name="ServiceItem">
+                                    <input type="hidden" value="false" name="ServiceItem">
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label>Commodity</label>
+                                <div style="width:100px">
+                                </div>
+                                <select asp-for="CommodityId" class="form-control" asp-items="ViewBag.CommodityId">
+                                    <option selected disabled>Select Commodity</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="Item" class="control-label">Item</label>
+                                <input asp-for="Item" class="form-control" />
+                                <span asp-validation-for="Item" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="UnitOfMeasure" class="control-label">Unit Of Measure</label>
+                                <input asp-for="UnitOfMeasure" class="form-control" />
+                                <span asp-validation-for="UnitOfMeasure" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="Glaccount" class="control-label">GL Account</label>
+                                <input asp-for="Glaccount" class="form-control" />
+                                <span asp-validation-for="Glaccount" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="ItemDescription" class="control-label">Item Description</label>
+                                <input asp-for="ItemDescription" class="form-control" />
+                                <span asp-validation-for="ItemDescription" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="DetailedDescription" class="control-label">Detailed Description</label>
+                                <input asp-for="DetailedDescription" class="form-control" />
+                                <span asp-validation-for="DetailedDescription" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="UnitPrice" class="control-label">Unit Price</label>
+                                <input asp-for="UnitPrice" class="form-control" />
+                                <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="Quantity" class="control-label">Quantity</label>
+                                <input asp-for="Quantity" class="form-control" />
+                                <span asp-validation-for="Quantity" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="SubTotal" class="control-label">SubTotal</label>
+                                <input asp-for="SubTotal" class="form-control" />
+                                <span asp-validation-for="SubTotal" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="Vattotal" class="control-label">VAT Total</label>
+                                <input asp-for="Vattotal" class="form-control" />
+                                <span asp-validation-for="Vattotal" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="Total" class="control-label">Total</label>
+                                <input asp-for="Total" class="form-control" />
+                                <span asp-validation-for="Total" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="RequestedBy" class="control-label">Requested By</label>
+                                <input asp-for="RequestedBy" class="form-control" />
+                                <span asp-validation-for="RequestedBy" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="ExpectedDate" class="control-label">Expected Date</label>
+                                <input asp-for="ExpectedDate" class="form-control" />
+                                <span asp-validation-for="ExpectedDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label>City</label>
+                                <div style="width:100px">
+                                </div>
+                                <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId">
+                                    <option selected disabled>Select Contract Type</option>
+                                </select>
+                                <span asp-validation-for="CityId" class="text-danger"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="DeliveryAddress" class="control-label"> Delivery Address</label>
+                                <input asp-for="DeliveryAddress" class="form-control" />
+                                <span asp-validation-for="DeliveryAddress" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label>Demand Plan</label>
+                                <div style="width:100px">
+                                </div>
+                                <select asp-for="DemandPlanId" class="form-control" asp-items="ViewBag.DemandPlanId">
+                                    <option selected disabled>Select Demand Plan</option>
+                                </select>
+                                <span asp-validation-for="DemandPlanId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" name="action" value="Submit" class="btn btn-primary pull-right">Submit</button>
+                        </div>
+                        <div style="width:100px">
+
+                        </div>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div>
+                                <button type="submit" name="action" value="Save" class="btn btn-primary pull-right">Save</button>
+                            </div>
+                        }
+                        <div style="width:100px">
+
+                        </div>
+
+                        <div>
+                            <button type="submit" name="action" value="Cancel" class="btn btn-primary">Cancel</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

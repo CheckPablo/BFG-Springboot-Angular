@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Entities.Models.Requisition>
+
+@{
+
+    Layout =   Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<form method="post" asp-controller="Requisition" asp-action="SearchRequisition" autocomplete="off">
+    <div class="input-group no-border pull-left " style="width:300px">
+        <input id="searchTerm" type="text" value="" class="form-control" name="reqNumber" placeholder="Enter Requisition No:">
+        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+        </button>
+    </div>
+</form>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="font-family:'Times New Roman'">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Declined Requisitions</h4>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.RequisitionNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.RequisitionTitle)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.RequisitionType)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Department)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DateCreated)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.RequestedBy)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Status)
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+
+                                                <a href='@Url.ActionLink("Details","Requisition",new{item.RequisitionId})'> @Html.DisplayFor(modelItem => item.RequisitionNo)</a>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.RequisitionTitle)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.RequisitionType.Description)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DateCreated)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.RequestedBy)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+  
+

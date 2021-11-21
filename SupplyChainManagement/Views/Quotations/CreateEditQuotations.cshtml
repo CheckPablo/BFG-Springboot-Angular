@@ -1,0 +1,279 @@
+﻿@using Entities.Models
+@model Entities.Models.Supplier;
+
+
+
+@{
+    var Req = (Requisition)ViewData["requisitionDetails"];
+    var selectedSupplierDetails = (Supplier)ViewData["selectedSupplierDetails"];
+    //var selectedSupplierDetails = (List<Supplier>)ViewData["selectedSupplierDetails"];
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+    //Layout = "~/Views/Shared/Uniform.cshtml";
+}
+<html>
+<head>
+    <link rel="apple-touch-icon" sizes="76x76" href="~/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/assets/demo/demo.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/assets/demo/demo.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+    @*<link href="~/assets/demo/demo.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+
+
+
+</head>
+<body>
+<div class="content">
+
+    <div class="container-fluid">
+        <h2>Order Supplier Details</h2>
+        <div class="row">
+            @*<table class="table table-responsive">
+                <tr>
+                    <td>Order No</td>
+                    <td>
+                        <input type="text" id="orderNo" class="form-control" />
+                        <span class="error">Order no required</span>
+                    </td>
+                    <td>Order Date</td>
+                    <td>
+                        <input type="text" id="orderDate" class="form-control" />
+                        <span class="error">Valid order date required (ex: MM-dd-yyyy)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td colspan="3">
+                        <textarea id="description" class="form-control"></textarea>
+                    </td>
+                </tr>
+            </table>*@
+
+
+            <div class="card-body">
+                @if (selectedSupplierDetails != null)
+                {
+                    <div class="row">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="SupplierName" class="bmd-label-floating"><b>Supplier Name</b></label><br />
+                                <label asp-for="SupplierName" class="bmd-label-floating">@selectedSupplierDetails.SupplierName</label>
+                                @*<input asp-for="SupplierName" type="text" class="form-control">*@
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="StreetName" class="control-label"><b>Address</b></label><br />
+                                <label asp-for="StreetName" class="control-label">@selectedSupplierDetails.StreetName</label><br />
+                                <label asp-for="StreetName" class="control-label">@selectedSupplierDetails.BuildingName</label><br />
+                                <label asp-for="Surburb" class="control-label">@selectedSupplierDetails.Surburb</label>
+                                @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="ContactPersonEmail" class="control-label"><b>Contact Email</b></label><br />
+                                <label asp-for="ContactPersonEmail" class="control-label">@selectedSupplierDetails.ContactPersonEmail</label>
+                                @*<span asp-validation-for="QueriesEmail" class="text-danger"></span>*@
+                            </div>
+                        </div>
+                    </div>
+
+                    //HERE
+
+
+                    <div class="row">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="SupplierName" class="bmd-label-floating"><b>Registration Number</b></label><br />
+                                <label asp-for="SupplierName" class="bmd-label-floating">@selectedSupplierDetails.RegistrationNo</label>
+                                @*<input asp-for="SupplierName" type="text" class="form-control">*@
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="StreetName" class="control-label"><b>VAT_No</b></label><br />
+                                <label asp-for="StreetName" class="control-label">@selectedSupplierDetails.VatregistrationNo</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="ContactPersonEmail" class="control-label"><b>BEE</b></label><br />
+                                <label asp-for="ContactPersonEmail" class="control-label">@selectedSupplierDetails.Bbbeeid</label>
+                                @*<span asp-validation-for="QueriesEmail" class="text-danger"></span>*@
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+        <div class="details">
+            <h2>
+                Order items
+            </h2>
+            <form enctype="multipart/form-data" asp-action="Create" class="form-inline" autocomplete="off">
+                <table class="table table-responsive">
+                    <tr>
+                        <td>Quantity</td>
+                        <td>Item</td>
+                        <td>Item Description</td>
+                        <td>Unit Price</td>
+                        <td>VAT</td>
+                        <td>Sub Total</td>
+                        <td>Total</td>
+
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr class="mycontainer" id="mainrow">
+                        <td>
+                            <input asp-for="@Req.Quantity" class="form-control" value="" name="itemQuantity" id="itemQuantity" onkeyup="multiply()" />
+                            <span class="error">Valid rate required</span>
+                        </td>
+                        <td>
+                            <input asp-for="@Req.Item" name="Item" class="form-control" />
+                            <span class="error">Valid rate required</span>
+                        </td>
+                        <td>
+                            <input asp-for="@Req.ItemDescription"  name="ItemDescription" class="form-control" />
+                            <span class="error">Valid quantity required</span>
+                        </td>
+                        <td>
+                            <input asp-for="@Req.UnitPrice" class="form-control" value="0.00" name="unitPrice" id="unitPrice" />
+                            <span class="error">Valid rate required</span>
+                        </td>
+                        <td>
+                            <input asp-for="@Req.Vattotal" class="form-control" name="vatTotal" id="vatTotal" onkeyup="add()" />
+                            <span class="error">Valid rate required</span>
+                        </td>
+                        <td>
+                            <input asp-for="@Req.SubTotal" class="form-control" name="subTotal" id="subTotal" />
+                            <span class="error">Valid rate required</span>
+                        </td>
+                        <td>
+                            <input asp-for="@Req.Total" class="form-control" name ="Total" id="finalTotal" />
+                            <span class="error">Valid rate required</span>
+                        </td>
+                        @*<td>
+                            <input type="text" id="rate" class="rate form-control" />
+                            <span class="error">Valid rate required</span>
+                        </td>*@
+                    <td>
+                        <input type="button" id="add" value="add" style="width:80px" class="btn btn-success" />
+                        <input type="hidden" name="ReqId" asp-for="@Req.RequisitionNo" />
+                        <input type="hidden" name="SupplierEmail" @selectedSupplierDetails.ContactPersonEmail/>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>Special Instructions</td>
+                        <td colspan="3">
+                            <textarea id="description" class="form-control"></textarea>
+                        </td>
+                        <td>Special Instructions</td>
+                        <td>
+                            @*<div class="col-md-4">
+            <div id="uploadControls">
+                <input asp-for="@Model.FormFile" type="file" />
+
+            </div>
+            <ul id="uploadResults"></ul>
+        </div>*@
+
+                            <div class="col-md-4">
+                                <form class="md-form" action="#">
+                                    <div class="file-field">
+                                        <div class="btn btn-primary btn-sm float-left">
+                                            <span>Choose files</span>
+                                            <input type="file" multiple>
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        </div>
+                                    </div>
+                                </form>
+                                </div>
+                        </td>
+
+                        @*<td>Special Instructions</td>
+        <td>
+            <input asp-for="@selectedSupplierDetails.BuildingName" class="form-control" />
+        </td>*@
+                    </tr>
+                </table>
+                <div id="orderItems">
+                    <table class="table table-responsive" id="orderdetailsItems"></table>
+                    <span id="orderItemError" style="color:red"></span>
+                </div>
+                <div style="padding:10px 0; text-align:right">
+                    @*<input id="submit" type="button" value="Save Order" class="btn btn-warning" style="padding:10px 20px" />*@
+                    <button type="submit" name="action" value="Submit" class="btn btn-primary pull-right">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    </div>
+    </body>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="~/Scripts/myScripts.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#orderDate').datepicker({
+            dateFormat: 'mm-dd-yy'
+        })
+    })
+</script>
+<script type="text/javascript">
+
+    var numUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" })
+    function multiply() {
+        a = Number(document.getElementById('itemQuantity').value);
+        b = Number(document.getElementById('unitPrice').value);
+        c = a * b;
+        document.getElementById('subTotal').value = c;
+
+    }
+    function add() {
+        a = Number(document.getElementById('subTotal').value);
+        b = Number(document.getElementById('vatTotal').value);
+        c = a + b;
+        document.getElementById('finalTotal').value = c;
+
+    }
+
+</script>
+<style>
+    span.error {
+        display: block;
+        visibility: hidden;
+        color: red;
+        font-size: 90%;
+    }
+
+    tr.error {
+        background-color: rgba(255,0,0,0.35);
+    }
+</style>

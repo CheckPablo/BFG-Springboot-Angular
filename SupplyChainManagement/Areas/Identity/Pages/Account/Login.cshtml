@@ -1,0 +1,127 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "LogIn";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="~/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/vendor/bootstrap/css/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/vendor/bootstrap/css/bootstrap-reboot.css" rel="stylesheet" />
+    <link href="~/fonts/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/fonts/iconic/css/material-design-iconic-font.css" rel="stylesheet" />
+    <link href="~/vendor/animate/animate.css" rel="stylesheet" />
+    <link href="~/vendor/css-hamburgers/hamburgers.css" rel="stylesheet" />
+    <link href="~/vendor/animsition/css/animsition.css" rel="stylesheet" />
+    <link href="~/vendor/select2/select2.css" rel="stylesheet" />
+    <link href="~/vendor/daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="~/css/util.css" rel="stylesheet" />
+
+    <link href="~/css/main.css" rel="stylesheet" />
+    <script src="//code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+
+
+</head>
+
+<body >
+    <section>
+        <div class="limiter">
+            @*<div class="container-login100" style="background-image: url('images/bg-01.jpg');">*@
+                <div class="container-login100" style="background-image: url('images/sc4.jpg');">
+                    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                        @*<div>
+                            <span ">
+                                <img class="manImg" src="images/qi.png"></img>
+                            </span>
+                        </div>*@
+                        <form id="account" method="post" autocomplete="off">
+                            <div class="col-lg-12 login-form">
+                                <div class="col-lg-12 login-form">
+                                    <div class="form-group">
+                                        <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+                                            <span class="label-input100">Username</span>
+                                            <input type="text" asp-for="Input.Email" class="input100" placeholder="Type your username" />
+                                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                            <span class="label-input100">Password</span>
+                                            @*<input class="input100" type="password" asp-for="Input.Password" name="pass" placeholder="Type your password">*@
+                                            <input type="password" asp-for="Input.Password" class="input100" placeholder="Type your password" />
+                                            <span class="focus-input100" data-symbol="&#xf190;"></span>
+                                            @*style=" border-bottom: 2px solid #d9d9d9;"*@
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary" style="margin-left:auto;margin-right:auto;display:block;margin-top:22%;margin-bottom:0%">LOGIN</button>
+                                        </div>
+
+                                        <div class="col-lg-12 loginbttm">
+                                            <div class="col-lg-6 login-btm login-text">
+                                                <!-- Error Message -->
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-2"></div>
+
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+    </section>
+    <section>
+        <partial name="_ExternalAuthentication" />
+        <div class="txt1 text-center p-t-54 p-b-20">
+            <span>
+                Or LogIn Using
+            </span>
+        </div>
+
+        <div class="flex-c-m">
+            <a href="https://accounts.google.com/o/oauth2/v2/auth/identifier?response_type=code&client_id=914395842462-vhcn739ngl239cvb4gn656aaf7r7ki7m.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Flocalhost%3A44334%2Fsignin-google&scope=openid%20profile%20email&state=CfDJ8LxBjwqPIKlNjiMCzIDp5vWfZJ8nYJorrl-CWDe-o9PUv0fZlzYH_O78_9ksAv-RDwaAf5EUmCComUG2Oz0RRVltEHFf3lZWbKBJdGUr4jn6wbbQiv0oE31pZppptopIfD8dTIWlyhzS-fzQMyuq_giXsgqyZSEJ6-LE-PcRC5LKL7b2yoalc0VSP3wkCnL86iU6szf2vkPe15ZVtikWZQXJ_b7fbS5939qwPMrj_RQZl1BgsrJsC-5pGzeJxCiivY8EwNLGgtrQAuNqCuiAIOU&flowName=GeneralOAuthFlow" class="login100-social-item bg3">
+                <i class="fa fa-google"></i>
+            </a>
+            <a href="#" class="login100-social-item bg1">
+                <i class="fa fa-facebook"></i>
+            </a>
+
+            <a href="#" class="login100-social-item bg2">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </div>
+    </section>
+
+ 
+    @*</div>*@
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/vendor/animsition/js/animsition.js"></script>
+    <script src="~/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="~/vendor/select2/select2.js"></script>
+    <script src="~/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="~/vendor/countdowntime/countdowntime.js"></script>
+
+    <script src="~/js/main.js"></script>
+</body>
+</html>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

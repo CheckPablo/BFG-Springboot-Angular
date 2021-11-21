@@ -1,0 +1,306 @@
+﻿@using Entities.Models
+@model Entities.Models.Supplier;
+
+
+
+@{
+    //var requisitionDetails = ViewData["QualificationName"];
+    var requisitionDetails = (List<Requisition>)ViewData["requisitionDetails"];
+    var selectedSupplierDetails = (List<Supplier>)ViewData["selectedSupplierDetails"];
+    ViewData["Title"] = "SupplierSearchDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Requistion To Supplier</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card" style="font-family:'Times New Roman'">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Supplier Review for RFFFQ</h4>
+                </div>
+
+                <div class="card-body">
+                    @if (selectedSupplierDetails != null)
+                    {
+                        @foreach (var ssd in selectedSupplierDetails)
+                        {
+
+                            <div class="row">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label asp-for="SupplierName" class="bmd-label-floating">Supplier Name</label>
+                                        <label asp-for="SupplierName" class="bmd-label-floating">@ssd.SupplierName</label>
+                                        @*<input asp-for="SupplierName" type="text" class="form-control">*@
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label asp-for="StreetName" class="control-label">Address</label>
+
+                                        @*<input asp-for="StreetName" class="form-control" />*@
+                                        @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label asp-for="StreetName" class="control-label">Address</label>
+                                        <label asp-for="StreetName" class="control-label">@ssd.BuildingName</label>
+                                        <label asp-for="Surburb" class="control-label">@ssd.Surburb</label>
+                                        @*<input asp-for="StreetName" class="form-control" />*@
+                                        @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label asp-for="ContactPersonEmail" class="control-label"></label>
+                                        <input asp-for="ContactPersonEmail" class="form-control" />
+                                        @*<span asp-validation-for="QueriesEmail" class="text-danger"></span>*@
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form method="post" asp-controller="Supplier" asp-action="RequisitionToSupplier">
+                                <div class="input-group">
+                                    <input id="searchTerm" class="form-control" type="text" name="reqNumber" placeholder="Enter Requisition number">
+
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                    }
+
+                    else if (selectedSupplierDetails == null && @Model == null)
+                    {
+                        @foreach (var ssd in selectedSupplierDetails)
+                        {
+
+                            <div class="row">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label asp-for="SupplierName" class="bmd-label-floating"><b>Supplier Name</b></label>
+                                        <label asp-for="SupplierName" class="bmd-label-floating">@ssd.SupplierName</label>
+                                        @*<input asp-for="SupplierName" type="text" class="form-control">*@
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label asp-for="StreetName" class="control-label">Address</label>
+
+                                        @*<input asp-for="StreetName" class="form-control" />*@
+                                        @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label asp-for="StreetName" class="control-label">Address</label>
+                                        <label asp-for="StreetName" class="control-label">@ssd.BuildingName</label>
+                                        <label asp-for="Surburb" class="control-label">@ssd.Surburb</label>
+                                        @*<input asp-for="StreetName" class="form-control" />*@
+                                        @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label asp-for="ContactPersonEmail" class="control-label"></label>
+                                        <input asp-for="ContactPersonEmail" class="form-control" />
+                                        @*<span asp-validation-for="QueriesEmail" class="text-danger"></span>*@
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form method="post" asp-controller="Supplier" asp-action="RequisitionToSupplier">
+                                <div class="input-group">
+                                    <input id="searchTerm" class="form-control" type="text" name="reqNumber" placeholder="Enter Requisition number">
+
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                    }
+
+                    else
+                    {
+                        @*@foreach (var ssd in selectedSupplierDetails)
+                            {*@
+
+                        <div class="row">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    @*<label asp-for="SupplierName" class="bmd-label-floating">Supplier Name</label>*@
+                                 
+                                    <label asp-for="SupplierName" class="bmd-label-floating">@Model.SupplierName</label>
+                                    @*<input asp-for="SupplierName" type="text" class="form-control">*@
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="StreetName" class="control-label">Address</label>
+
+                                    @*<input asp-for="StreetName" class="form-control" />*@
+                                    @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="StreetName" class="control-label">Address</label>
+                                    <label asp-for="StreetName" class="control-label">@Model.BuildingName</label>
+                                    <label asp-for="Surburb" class="control-label">@Model.Surburb</label>
+                                    @*<input asp-for="StreetName" class="form-control" />*@
+                                    @*<span asp-validation-for="Motivation" class="text-danger"></span>*@
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="ContactPersonEmail" class="control-label"></label>
+                                    <input asp-for="ContactPersonEmail" class="form-control" />
+                                    @*<span asp-validation-for="QueriesEmail" class="text-danger"></span>*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <form method="post" asp-controller="Supplier" asp-action="RequisitionToSupplier">
+                            <div class="input-group">
+                                <input id="searchTerm" class="form-control" type="text" name="reqNumber" placeholder="Enter Requisition number">
+
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        @*}*@
+
+                    }
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <p><b>Requisition Details</b></p>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>Name</th>
+        </tr>
+        @if (requisitionDetails != null)
+        {
+            @foreach (var Req in requisitionDetails)
+            {
+                @*<tr>
+                        <td>@Req.</td>
+                        <td>@teacher.Code</td>
+                        <td>@teacher.Name</td>
+                    </tr>*@
+
+                <div class="card-body">
+                    <form asp-action="SendRFQ" class="form-inline" autocomplete="off">
+                        <div class="row">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label>Item Description</label>
+                                    <input type="hidden" name="quoteReqId" asp-for="@Req.RequisitionId" />
+                                    <label class="bmd-label-floating">Item</label>
+                                    <label class="control-label">@Req.Item</label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label>Item Description</label>
+                                    <div style="width:100px">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label>Item Description</label>
+                                    <label class="bmd-label-floating">Item Description</label>
+                                    <label class="control-label">@Req.ItemDescription</label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label>Item Description</label>
+                                    <label class="bmd-label-floating">Quantity</label>
+                                    <label class="control-label">@Req.Quantity</label>
+                                </div>
+                            </div>
+                            @*<div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label>Contract Type</label>
+                                        <div style="width:100px">
+                                        </div>
+                                        <select asp-for="ContractTypeId" class="form-control" asp-items="ViewBag.ContractTypeId">
+                                            <option selected disabled>Select Contract Type</option>
+                                        </select>
+                                    </div>
+                                </div>*@
+
+
+
+
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </form>
+                </div>
+
+
+            }
+            //else
+            //{
+
+            //    Console.WriteLine(requisitionDetails);
+            // }
+
+        }
+    </table>
+
+</div>
+

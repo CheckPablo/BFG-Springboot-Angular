@@ -1,0 +1,594 @@
+﻿@model Entities.Models.Requisition
+@{
+
+    Layout =   Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}<html>
+
+ <head>
+     <!-- Google Font: Source Sans Pro -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+     <!-- daterange picker -->
+     <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
+     <!-- iCheck for checkboxes and radio inputs -->
+     <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+     <!-- Bootstrap Color Picker -->
+     <link rel="stylesheet" href="~/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+     <!-- Tempusdominus Bootstrap 4 -->
+     <link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+     <!-- Select2 -->
+     <link rel="stylesheet" href="~/plugins/select2/css/select2.min.css">
+     <link rel="stylesheet" href="~/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+     <!-- Bootstrap4 Duallistbox -->
+     <link rel="stylesheet" href="~/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+     <!-- BS Stepper -->
+     <link rel="stylesheet" href="~/plugins/bs-stepper/css/bs-stepper.min.css">
+     <!-- dropzonejs -->
+     <link rel="stylesheet" href="~/plugins/dropzone/min/dropzone.min.css">
+     <!-- Theme style -->
+     <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+
+
+ </head>
+
+
+@*</html>*@
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="accordion" class="checkout">
+                    <form enctype="multipart/form-data" asp-action="Create" class="form-inline" autocomplete="off">
+                        <div class="panel checkout-step">
+                            <div class="panel checkout-step">
+                                <div role="tab" id="headingTwo">
+                                    <span class="checkout-step-number">1</span>
+                                    <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" style="color:#3ac8ed;" data-parent="#accordion" href="#collapseTwo"> Requistion Details </a> </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse">
+                                    <div class="checkout-step-body">
+                                        <div class="checout-address-step">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+
+                                                            <div class="form-group input-material">
+
+                                                                <input asp-for="RequisitionTitle" type="text" class="form-control" id="name-field" required style="width:800px">
+
+                                                                <label for="name-field">Requisition Title</label>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-3">
+                                                            <div class="form-inline">
+                                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+                                                                    @*<select asp-for="RequisitionTypeId" class="form-control" asp-items="ViewBag.RequisitionTypeId">*@
+                                                                    <select asp-for="RequisitionTypeId" class="mdl-textfield__input" asp-items="ViewBag.RequisitionTypeId" id="octane" name="octane" style="height:3.4rem">
+                                                                        <option selected disabled>Type Of Requisition </option>
+                                                                    </select>
+                                                                    <label class="mdl-textfield__label" for="octane">Select Requisition Type</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            @*<div class="form-inline">
+                                                                    <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId">
+                                                                        <option selected disabled>Select Department</option>
+                                                                    </select>
+                                                                </div>*@
+                                                            <div class="form-inline">
+                                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+                                                                    <select asp-for="DepartmentId" class="mdl-textfield__input" asp-items="ViewBag.DepartmentId" id="octane" name="octane" style="height:3.4rem">
+                                                                        <option selected disabled> Department </option>
+                                                                    </select>
+                                                                    <label class="mdl-textfield__label" for="octane">Select Departmentd </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-inline">
+                                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+             
+                                                                    <select asp-for="ContractTypeId" class="mdl-textfield__input" asp-items="ViewBag.ContractTypeId" id="octane" name="octane" style="height:3.4rem">
+                                                                        <option selected disabled> Contract Type </option>
+                                                                    </select>
+                                                                    <label class="mdl-textfield__label" for="octane">Select Contractpe</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-3">       
+                                                            <div class="form-inline">
+                                                                <input asp-for="Motivation" class="form-control" placeholder="Motivation" style="height:4.8rem;"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-lg-3">
+                                                                <div class="form-inline">
+                                                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+                                                                        <input asp-for="QueriesName" class="form-control" placeholder="Query Name" style="height:4.8rem;" />
+                                                                        <span asp-validation-for="QueriesName" class="text-danger"></span>
+                                                                    </div>
+                                                                </div>
+                                                             </div>
+
+                                                            <div class="col-lg-3">
+                                                                <div class="form-inline">
+                                                                    @*<label asp-for="QueriesPhone" class="control-label">Queries Phone</label>
+                                                                    <input asp-for="QueriesPhone" class="form-control" />
+                                                                    <span asp-validation-for="QueriesPhone" class="text-danger"></span>*@
+
+                                                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+                                                                        <input asp-for="QueriesPhone" class="form-control" placeholder="Query Phone" style="height:4.8rem;" />
+                                                                        <span asp-validation-for="QueriesPhone" class="text-danger"></span>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+
+                                                            <div class="col-lg-3">
+                                                             
+                                                                    @*<label asp-for="QueriesEmail" class="control-label">QueriesEmail </label>
+                                                                    <input asp-for="QueriesEmail" class="form-control" placeholder="@User.Identity.Name" />
+                                                                    <span asp-validation-for="QueriesEmail" class="text-danger"></span>*@
+
+                                                                    <div class="form-inline">
+                                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+                                                                            <input asp-for="QueriesEmail" class="form-control" placeholder="@User.Identity.Name"style="height:4.8rem;" />
+                                                                            <span asp-validation-for="QueriesEmail" class="text-danger"></span>
+                                                                        </div>
+                                                                    </div>
+                                                         
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <div class="form-inline">
+                                                                    <div class="form-check" style="height:7.8rem">
+
+                                                                        <label class="form-check-label">
+                                                                            Approval Exception
+                                                                            <input id="ApprovalException" class="form-check-input" type="checkbox" value="true" name="ApprovalException">
+                                                                            <input type="hidden" value="false" name="ApprovalException">
+                                                                            <span class="form-check-sign">
+                                                                                <span class="check"></span>
+                                                                            </span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group bmd-form-group">
+
+                                                        <textarea asp-for="DetailedDescription" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a detailed description ...." style="width:1000px;display:none"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+
+                                                            <div class="col-lg-3">
+                                                                <div class="form-inline">
+                                                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+                                                                  
+                                                                        <select asp-for="ClassificationId" class="mdl-textfield__input" asp-items="ViewBag.ClassificationId" id="octane" name="octane" style="height:3.4rem">
+                                                                            <option selected disabled>Classification</option>
+                                                                        </select>
+                                                                        <label class="mdl-textfield__label" for="octane">Select Requisition Type</label>
+                                                                    </div>
+                                                           
+                                                                </div>
+                                                            
+                                                            </div>
+
+                                                            <div class="col-lg-3">
+                                                                <div class="form-inline">
+                                                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+
+                                                                        <select asp-for="DemandPlanId" class="mdl-textfield__input" asp-items="ViewBag.DemandPlanId" id="octane" name="octane" style="height:3.4rem">
+                                                                            <option selected disabled>Select Demand Plan </option>
+                                                                        </select>
+                                                                        <label class="mdl-textfield__label" for="octane">Select Demand Plan</label>
+                                                                    </div>
+                                                                </div>
+                                                           
+                                                            </div>
+
+
+                                                            <div class="col-lg-3">
+                                                                <div class="form-inline">
+                                                                    <div class="form-check" style="height:7.8rem">
+                                                                        <label class="form-check-label">
+                                                                            Service Item
+                                                                            <input id="ServiceItem" class="form-check-input" type="checkbox" value="true" name="ServiceItem">
+                                                                            <input type="hidden" value="false" name="ServiceItem">
+                                                                            <span class="form-check-sign">
+                                                                                <span class="check"></span>
+                                                                            </span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <div class="form-inline">
+                                                                
+                                                                    @*<select asp-for="CommodityId" class="form-control" asp-items="ViewBag.CommodityId">
+                                                                        <option selected disabled>Select Commodity</option>
+                                                                    </select>*@
+
+                                                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+
+                                                                        <select asp-for="CommodityId" class="mdl-textfield__input" asp-items="ViewBag.CommodityId" id="octane" name="octane" style="height:3.4rem">
+                                                                            <option selected disabled>Select Commodity </option>
+                                                                        </select>
+                                                                        <label class="mdl-textfield__label" for="octane">Select Commodity </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+
+                                        </div>
+                                    </div>
+                                    @*// requition Item Details*@
+                                </div>
+
+                                <div class="panel checkout-step">
+                                    <div role="tab" id="headingTwo">
+                                        <span class="checkout-step-number">2</span>
+                                        <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">  Item And Service Description </a> </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse">
+                                        <div class="checkout-step-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        @*<div class="col-lg-3">
+                                                                <div class="form-inline">
+                                                                    <label asp-for="Item" class="control-label">Item</label>
+                                                                    <input asp-for="Item" class="form-control" />
+                                                                    <span asp-validation-for="Item" class="text-danger"></span>
+                                                                </div>
+                                                            </div>*@
+
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group bmd-form-group">
+                                                                <label class="control-label" for="State">Item</label>
+                                                                <input asp-for="Item" class="form-control input-sm" type="text" />
+                                                                <span asp-validation-for="Item" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group bmd-form-group">
+                                                                <label asp-for="ItemDescription" class="control-label">Item Description</label>
+                                                                <input asp-for="ItemDescription" class="form-control" />
+                                                                <span asp-validation-for="ItemDescription" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group bmd-form-group">
+                                                                <label asp-for="UnitOfMeasure" class="control-label">Unit Of Measure</label>
+                                                                <input asp-for="UnitOfMeasure" class="form-control" />
+                                                                <span asp-validation-for="UnitOfMeasure" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                    <div class="row">
+
+                                                        <div class="col-md-12">
+                                                            <div class="form-group bmd-form-group">
+
+                                                                <textarea asp-for="DetailedDescription" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a detailed description ...." style="width:1000px"></textarea>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel checkout-step">
+                                    <div role="tab" id="headingFour">
+                                        <span class="checkout-step-number">3</span>
+                                        <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> Costing And Budget</a> </h4>
+                                    </div>
+                                    <div id="collapseFour" class="panel-collapse collapse">
+                                        <div class="checkout-step-body">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <div class="form-group bmd-form-group">
+                                                        <label asp-for="Quantity" class="control-label">Quantity</label>
+                                                        <input asp-for="Quantity" class="form-control" value="" name="qty" id="qty" onkeyup="multiply()" />
+                                                        <span asp-validation-for="Quantity" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <div class="form-group bmd-form-group">
+                                                        <label asp-for="SubTotal" class="control-label">SubTotal</label>
+                                                        <input asp-for="SubTotal" class="form-control" value="0.00" id="subtotal" />
+                                                        <span asp-validation-for="SubTotal" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <div class="form-group bmd-form-group">
+                                                        <label asp-for="Vattotal" class="control-label">VAT Total</label>
+                                                        <input asp-for="Vattotal" class="form-control" value="" name="vat" id="vat" onkeyup="add()" />
+                                                        <span asp-validation-for="Vattotal" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-3">
+
+                                                    <div class="form-group bmd-form-group">
+                                                        <label asp-for="Total" class="control-label">Total</label>
+                                                        <input asp-for="Total" class="form-control" id="total" />
+                                                        <span asp-validation-for="Total" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <div class="form-group bmd-form-group">
+                                                        <label asp-for="Glaccount" class="control-label">GL Account</label>
+                                                        <input asp-for="Glaccount" class="form-control" />
+                                                        <span asp-validation-for="Glaccount" class="text-danger"></span>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                @*</div>*@
+
+                                @*Logistics*@
+
+                                <div class="panel checkout-step">
+                                    <div role="tab" id="headingFive">
+                                        <span class="checkout-step-number">4</span>
+                                        <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"> Logistics </a> </h4>
+                                    </div>
+                                    <div id="collapseFive" class="panel-collapse collapse">
+                                        <div class="checkout-step-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-3">
+                                                            <div class="form-inline">
+                                                                <!--<div class="form-group bmd-form-group">-->
+                                                                    @*<label asp-for="ShippingMethod" class="bmd-label-floating">Requisition Title</label>*@
+                                                                    @*<select asp-for="ShippingMethodId" class="form-control" asp-items="ViewBag.ShippingMethodId">*@
+                                                                    <!--@Html.DropDownListFor(m => m.ShippingMethodId, this.ViewBag.ShippingMethodId as SelectList, new { @class = "form-control" })
+                                                                    <option selected disabled>Select Shipping Method</option>-->
+                                                                    @*</select>*@
+                                                                <!--</div>-->
+
+                                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+                                                                    @*<select asp-for="RequisitionTypeId" class="form-control" asp-items="ViewBag.RequisitionTypeId">*@
+                                                                    <select asp-for="ShippingMethodId" class="mdl-textfield__input" asp-items="ViewBag.ShippingMethodId" id="octane" name="octane" style="height:3.4rem">
+                                                                        <option selected disabled>Transporation  </option>
+                                                                    </select>
+                                                                    <label class="mdl-textfield__label" for="octane">Select Shipping Type</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-inline">
+                                                                @*<div class="form-group bmd-form-group">
+                                                                    <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId">
+                                                                        <option selected disabled>Select Delivery Site</option>
+                                                                    </select>
+                                                                </div>*@
+
+                                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+                                                                    @*<select asp-for="RequisitionTypeId" class="form-control" asp-items="ViewBag.RequisitionTypeId">*@
+                                                                    <select asp-for="CityId" class="mdl-textfield__input" asp-items="ViewBag.CityId" id="octane" name="octane" style="height:3.4rem">
+                                                                        <option selected disabled>Delivery Site </option>
+                                                                    </select>
+                                                                    <label class="mdl-textfield__label" for="octane">Select Delivery Site</label>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <div class="form-inline">
+                                                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+                                                                        @*<select asp-for="RequisitionTypeId" class="form-control" asp-items="ViewBag.RequisitionTypeId">*@
+                                                                        <select asp-for="CityId" class="mdl-textfield__input" asp-items="ViewBag.CityId" id="octane" name="octane" style="height:3.4rem">
+                                                                            <option selected disabled>Delivery Address </option>
+                                                                        </select>
+                                                                        <label class="mdl-textfield__label" for="octane">Select Delivery Site</label>
+                                                                    </div>
+
+                                                                </div>
+                                                                    <!--<div class="form-group bmd-form-group">-->
+                                                                        @*<label asp-for="DeliveryAddress" class="control-label">Delivery Address</label>*@
+                                                                        <!--<input asp-for="DeliveryAddress" class="form-control" placeholder="Delivery Address" />
+                                                                        <span asp-validation-for="DeliveryAddress" class="text-danger"></span>
+                                                                    </div>-->
+                                                                </div>
+                                                            </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group bmd-form-group">
+
+                                                        <textarea asp-for="DetailedDescription" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a detailed description ...." style="width:1000px;display:none"></textarea>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group bmd-form-group">
+                                                                    <label asp-for="ExpectedDate" class="control-label">Expected Date</label>
+                                                                    <input asp-for="ExpectedDate" id="expectedDate" type="text" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" />
+                                                                    <span asp-validation-for="ExpectedDate" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group bmd-form-group">
+                                                                    @*<label asp-for="RequestedBy" class="control-label">Requested By</label>*@
+                                                                    <input asp-for="RequestedBy" class="form-control" placeholder="Requested By" />
+                                                                    <span asp-validation-for="RequestedBy" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel checkout-step">
+                                    <div role="tab" id="headingSix">
+                                        <span class="checkout-step-number">5</span>
+                                        <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix"> Attachments </a> </h4>
+                                    </div>
+
+                                    <div id="collapseSix" class="panel-collapse collapse">
+                                        <div class="checkout-step-body">
+                                            <div class="row">
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group bmd-form-group">
+                                                        <label asp-for="AttachmentDescription" class="control-label">Attachment Description</label>
+                                                        <input asp-for="AttachmentDescription" class="form-control" />
+                                                        <span asp-validation-for="AttachmentDescription" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="col-md-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            Overwrite Existing Attachment
+                                                            <input id="OverwriteExistingAttachment" class="form-check-input" type="checkbox" value="true" name="OverwriteExistingAttachment">
+                                                            <input type="hidden" value="false" name="OverwriteExistingAttachment">
+                                                            <span class="form-check-sign">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            Attachment Visible To Supplier
+                                                            <input id="AttachmentVisibleToSupplier" class="form-check-input" type="checkbox" value="true" name="AttachmentVisibleToSupplier">
+                                                            <input type="hidden" value="false" name="AttachmentVisibleToSupplier">
+                                                            <span class="form-check-sign">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-3">
+                                                    <div class="col-md-4">
+                                                        <div id="uploadControls">
+                                                            <input asp-for="@Model.FormFile" type="file" />
+
+                                                        </div>
+                                                        <ul id="uploadResults"></ul>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width:100px">
+                                </div>
+                                <div class="form-inline">
+                                    <div>
+                                        <button type="submit" name="action" value="Save" class="btn btn-primary pull-right">Save</button>
+                                    </div>
+                                    <div style="width:100px">
+
+                                    </div>
+
+                                    <div>
+                                        <button type="submit" name="action" value="Submit" class="btn btn-primary pull-right">Submit</button>
+                                    </div>
+                                    <div style="width:100px">
+
+                                    </div>
+                                    <div>
+                                        <button type="submit" name="action" value="Cancel" class="btn btn-primary pull-right">Cancel</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
+<script>
+
+    var numUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "ZAR" })
+    function multiply() {
+        a = Number(document.getElementById('qty').value);
+        b = Number(document.getElementById('price').value);
+        c = a * b;
+        document.getElementById('subtotal').value = c;
+
+    }
+    function add() {
+
+        a = Number(document.getElementById('subtotal').value);
+        b = Number(document.getElementById('vat').value);
+        c = a + b;
+        document.getElementById('total').value = c;
+    }
+</script>

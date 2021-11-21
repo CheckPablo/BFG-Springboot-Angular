@@ -1,0 +1,428 @@
+﻿@model Entities.Models.Requisition
+
+@{
+    //Layout =   Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";financeStep
+    var lineManagerStep = ViewData["lineManagerStep"];
+    var financeStep = ViewData["financeStep"];
+    var supplyChainStep = ViewData["SupplyChainStep"];
+    var RFQSentStep = ViewData["RFQSentStep"];
+    var RFQResponseStep = ViewData["RFQResponseStep"];
+    //var QouteReview = ViewData["QouteReview"];
+    var PurchaseOrderSent = ViewData["PurchaseOrderSent"];
+    var InvoiceReceived = ViewData["InvoiceReceived"];
+    //var goodsReceived = ViewData["goodsReceived"];
+
+    var details = Model;
+
+    //Layout = "~/Views/Shared/Uniform.cshtml";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+<html>
+<head>
+    <link rel="apple-touch-icon" sizes="76x76" href="~/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/css/InteractiveStyling.css" rel="stylesheet" />
+    @*<link href="~/assets/demo/demo.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/progress-wizard.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/assets/demo/demo.css" rel="stylesheet" />
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>*@
+
+
+</head>
+<body>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-default">
+                <div class="card-body">
+
+                    <ul class="steps">
+                        <li class="is-active">Requisition form completed</li>
+                        <li>Requisition form sent to line manager</li>
+                        <li>Line manager approved and sent to supply chain Manager</li>
+                        <li>Supply chain manager approved and RFQ sent</li>
+                        <li>Suppliers respond to RFQ </li>
+                        <li>Purchase order sent to selected supplier</li>
+                        <li>Invoice Finalised</li>
+                        <li>Product/Service Delivered</li>
+                    </ul>
+                </div>
+          
+                        <table class="table"style="margin-left: 100px">
+                            @{
+
+                                <tr>
+                                    <td>
+                                        Requisition Number:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.RequisitionNo)
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Requisition Title:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.RequisitionTitle)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Motivation:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Motivation)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Queries Name:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.QueriesName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Queries Phone:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.QueriesPhone)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Queries Email
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.QueriesEmail)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Date Created:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.DateCreated)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Created By:
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(model => model.CreatedBy)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Site Visit Required:
+                                    </td>
+                                    <td>
+
+                                        @Html.CheckBoxFor(model => model.SiteVisitRequired.Value)
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Attachment Path:
+                                    </td>
+                                    @*<td>
+                                @Html.DisplayFor(model => System.Diagnostics.Process.Start("explorer.exe", "\""+ model.AttachmentPath + "\""))
+                            </td>*@
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Attachment Description:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.AttachmentDescription)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        OverwriteExisting Attachment:
+                                    </td>
+                                    <td>
+                                        @*@Html.DisplayFor(model => model.OverwriteExistingAttachment)*@
+                                        @Html.CheckBoxFor(model => model.OverwriteExistingAttachment.Value)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Attachment Visible To Supplier:
+                                    </td>
+                                    <td>
+                                        @*@Html.DisplayFor(model => model.AttachmentVisibleToSupplier)*@
+                                        @Html.CheckBoxFor(model => model.AttachmentVisibleToSupplier.Value)
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Approval Exception:
+                                    </td>
+                                    <td>
+                                        @*@Html.DisplayFor(model => model.ApprovalException)*@
+                                        @Html.CheckBoxFor(model => model.AttachmentVisibleToSupplier.Value)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Is Complete:
+                                    </td>
+                                    <td>
+                                        @*@Html.DisplayFor(model => model.IsComplete)*@
+                                        @Html.CheckBoxFor(model => model.IsComplete.Value)
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Service Item:
+                                    </td>
+                                    <td>
+                                        @*@Html.DisplayFor(model => model.ServiceItem)*@
+                                        @Html.CheckBoxFor(model => model.ServiceItem.Value)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Unit Of Measure:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.UnitOfMeasure)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        GL Account:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Glaccount)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        ItemDescription:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.ItemDescription)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Detailed Description:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.DetailedDescription)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        UnitPrice::
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.UnitPrice)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Quantity:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Quantity)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Sub Total::
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.SubTotal)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Vat total:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Vattotal)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Total:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Total)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Requested By:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.RequestedBy)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Expected Date:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.ExpectedDate)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Delivery Address:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.DeliveryAddress)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        City:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.City.CityName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Classification:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Classification.Description)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Commodity Description:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Commodity.Description)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Contract Type Description:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.ContractType.Description)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Demand Plan Item:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.DemandPlan.Item)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Department Name:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Department.DepartmentName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Requisition Type::
+                                    </td>
+                                    <td>
+                                        @@Html.DisplayFor(model => model.RequisitionType.Description)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        ShippingMethod Description:
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.ShippingMethod.Description)
+                                    </td>
+                                </tr>
+
+
+
+
+
+                            }
+                            <div style="margin-left: 100px">
+                                <a asp-action="Index">Back to List</a>|
+                                @if (User.IsInRole("CFO") || User.IsInRole("Manager") || User.IsInRole("CEO"))
+                                {
+                                    <a asp-action="ApproveRequisition" asp-route-id="@Model.RequisitionId" class="fa fa-check" aria-hidden="true">Approve</a>
+                                }|
+                                @if (User.IsInRole("CFO") || User.IsInRole("Manager") || User.IsInRole("CEO"))
+                                {
+                                    <a asp-action="DeclineRequisition" asp-route-id="@Model.RequisitionId" class="fa fa-ban" aria-hidden="true">Decline</a>
+                                }|
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@Model.RequisitionId" class="fa fa-pencil-square-o">Edit</a>
+                                }
+                                @if (User.IsInRole("CFO") || User.IsInRole("Manager") || User.IsInRole("CEO"))
+                                {
+                                    <a asp-action="ReworkRequisition" name="action" asp-route-id="@Model.RequisitionId" value class="fa fa-pencil-square-o">Rework</a>
+                                }
+
+                            </div>
+                        </table>
+                   
+            </div>
+            </div>
+    </section>
+
+            <!--<div class="container">-->
+            @*<header>Signup Form</header>*@
+            <!--<div class="container-body">-->
+            @*<div class="form-horizontal">
+                    <h4>StudentModel</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.RequisitionNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.RequisitionNo, new { htmlAttributes = new { @class = "form-control" } })
+
+                        </div>
+                    </div>
+
+                </div>*@
+
+
+
+
+
+
+
+            <script src="common.js"></script>
+</body>
+</html>

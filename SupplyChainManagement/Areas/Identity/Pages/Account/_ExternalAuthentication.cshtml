@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using SupplyChainManagement.Models
+
+@inject SignInManager<IdentityUser> SignInManager
+
+<div class="col-md-5 offset-2">
+    <section>
+        @*<h5 style="font-family:Times New Roman">External LogIn</h5>*@
+        
+        @{
+            var providers = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            if (!providers.Any())
+            {
+                <div>
+                    <p>
+                        We couldn't find any external provider
+                    </p>
+                </div>
+            }
+            else
+            {
+    <form asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+        <div >
+          
+            @*<p>
+                @foreach (var provider in providers)
+                {
+                    <input type="submit" class="btn btn-info" value="@provider.Name" name="provider" />
+                  
+                }
+            </p>*@
+        </div>
+
+    </form>
+            }
+        }
+    </section>
+</div>

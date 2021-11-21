@@ -1,0 +1,35 @@
+﻿@using Entities.Models
+@model Entities.Models.Supplier;
+@{
+    ViewData["Title"] = "RFQ Confirmation";
+
+    var Req = ViewData["requisitionNumber"].ToString();
+    var ssd = (Supplier)ViewData["selectedSupplierDetails"];
+
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<h1>RFQ Confirmation</h1>
+
+<br />
+<br />
+
+<div class="container">
+    <div class="master">
+        <h3>Request For Confirmation Submission Successful!</h3>
+        <br />
+        <p>
+            Thank you <b>@User.Identity.Name</b> You have successfully submitted your RFQ . The RFQ for Requisition Number <b>@Req </b>has been submitted to<b>@ssd.SupplierName </b> you will be provided with feedback shortly
+            Following your application, one of our education consultants will be in contact with you to assist you with the registration process.
+        </p>
+        @*<p>
+                Please be advised that your application for @Model.Qualification is currently in progress and being reviewed by the Regenesys Staff. Your reference number is: <strong>@Model.ApplicationReferenceNumber</strong><br /><br />
+                For more details you can query by sending an email to: <strong>info@regenesys.co.za</strong> or call <strong>+27 0 11 669 5000.</strong><br /><br />
+
+                Have a nice day.
+            </p>*@
+
+    </div>
+</div>
+

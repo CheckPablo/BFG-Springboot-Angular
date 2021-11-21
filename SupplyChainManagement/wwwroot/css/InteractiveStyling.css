@@ -1,0 +1,342 @@
+/*padding: 0;
+}*/
+.breadcrumb li { 
+  float: left; 
+}
+.breadcrumb li a {
+  color: white;
+  text-decoration: none; 
+  padding: 10px 0 10px 55px;
+  background: brown; /* fallback color */
+  background: hsla(34,85%,35%,1); 
+  position: relative; 
+  display: block;
+  float: left;
+}
+.breadcrumb li a:after { 
+  content: " "; 
+  display: block; 
+  width: 0; 
+  height: 0;
+  border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid hsla(34,85%,35%,1);
+  position: absolute;
+  top: 50%;
+  margin-top: -50px; 
+  left: 100%;
+  z-index: 2; 
+} 
+.breadcrumb li a:before { 
+  content: " "; 
+  display: block; 
+  width: 0; 
+  height: 0;
+  border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid white;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px; 
+  margin-left: 1px;
+  left: 100%;
+  z-index: 1; 
+} 
+.breadcrumb li:first-child a {
+  padding-left: 10px;
+}
+.breadcrumb li:nth-child(2) a       { background:        hsla(34,85%,45%,1); }
+.breadcrumb li:nth-child(2) a:after { border-left-color: hsla(34,85%,45%,1); }
+.breadcrumb li:nth-child(3) a       { background:        hsla(34,85%,55%,1); }
+.breadcrumb li:nth-child(3) a:after { border-left-color: hsla(34,85%,55%,1); }
+.breadcrumb li:nth-child(4) a       { background:        hsla(34,85%,65%,1); }
+.breadcrumb li:nth-child(4) a:after { border-left-color: hsla(34,85%,65%,1); }
+.breadcrumb li:nth-child(5) a       { background:        hsla(34,85%,75%,1); }
+.breadcrumb li:nth-child(5) a:after { border-left-color: hsla(34,85%,75%,1); }
+.breadcrumb li:last-child a {
+  background: transparent !important;
+  color: black;
+  pointer-events: none;
+  cursor: default;
+}
+.breadcrumb li:last-child a:after { border: 0; }
+.breadcrumb li a:hover { background: hsla(34,85%,25%,1); }
+.breadcrumb li a:hover:after { border-left-color: hsla(34,85%,25%,1) !important; }
+
+
+.steps {
+    margin: 40px;
+    padding: 0;
+    overflow: hidden;
+    margin-top: -10px;
+    margin-left:60px;
+}
+.steps a {
+  color: white;
+  text-decoration: none;
+}
+.steps em {
+  display: block;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+    .steps li {
+        float: left;
+        margin-left: 0;
+        width: 200px; /* 100 / number of steps */
+        height: 80px; /* total height */
+        list-style-type: none;
+        padding: 5px 5px 5px 30px; /* padding around text, last should include arrow width */
+        border-right: 3px solid white; /* width: gap between arrows, color: background of document */
+        position: relative;
+        box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);     
+        background: linear-gradient(#fff, #374c80)
+        /*centering*/
+        /*display: inline-block;
+        box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+        border-radius: 5px;*/
+        /*Lets add the numbers for each link using CSS counters. flag is the name of the counter. to be defined using counter-reset in the parent element of the links*/
+        /*counter-reset: flag*/
+    }
+/* remove extra padding on the first object since it doesn't have an arrow to the left */
+.steps li:first-child {
+  padding-left: 5px;
+}
+/* white arrow to the left to "erase" background (starting from the 2nd object) */
+.steps li:nth-child(n+2)::before {
+  position: absolute;
+  top:0;
+  left:0;
+  display: block;
+  border-left: 25px solid white; /* width: arrow width, color: background of document */
+  border-top: 40px solid transparent; /* width: half height */
+  border-bottom: 40px solid transparent; /* width: half height */
+  width: 0;
+  height: 0;
+  content: " ";
+}
+/* colored arrow to the right */
+        .steps li::after {
+            z-index: 1; /* need to bring this above the next item */
+            position: absolute;
+            top: 0;
+            right: -25px; /* arrow width (negated) */
+            display: block;
+            border-left: 25px solid #7c8437; /* width: arrow width */
+            border-top: 40px solid transparent; /* width: half height */
+            border-bottom: 40px solid transparent; /* width: half height */
+            width: 0;
+            height: 0;
+            content: " ";
+            background: linear-gradient(#fff, #374c80)
+        }
+
+/* Setup colors (both the background and the arrow) */
+
+/* Completed */
+    .steps li {
+        background-color: #374c80;
+    }
+        .steps li::after {
+            border-left-color: #374c80;
+        }
+
+/* Current */
+.steps li.current { background-color: #C36615; }
+.steps li.current::after { border-left-color: #C36615; }
+
+/* Following */
+.steps li.current ~ li { background-color: #EBEBEB; }
+.steps li.current ~ li::after { border-left-color: #EBEBEB; }
+
+/* Hover for completed and current */
+.steps li:hover {background-color: #696}
+.steps li:hover::after {border-left-color: #696}
+
+
+
+.arrows { white-space: nowrap; }
+.arrows li {
+    display: inline-block;
+    line-height: 26px;
+    margin: 0 9px 0 -10px;
+    padding: 0 20px;
+    position: relative;
+}
+    .arrows li::before,
+    .arrows li::after {
+        border-right: 1px solid #374c80;
+        content: '';
+        display: block;
+        height: 50%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: -1;
+        transform: skewX(45deg);
+    }
+.arrows li::after {
+    bottom: 0;
+    top: auto;
+    transform: skewX(-45deg);
+}
+
+.arrows li:last-of-type::before, 
+.arrows li:last-of-type::after { 
+    display: none; 
+}
+
+.arrows li a { 
+   font: bold 24px Sans-Serif;  
+   letter-spacing: -1px; 
+   text-decoration: none;
+}
+
+.arrows li:nth-of-type(1) a { color: hsl(0, 0%, 70%); } 
+.arrows li:nth-of-type(2) a { color: hsl(0, 0%, 65%); } 
+.arrows li:nth-of-type(3) a { color: hsl(0, 0%, 50%); } 
+.arrows li:nth-of-type(4) a { color: hsl(0, 0%, 45%); }
+.steps li.is-active{
+  border-bottom: 1px solid #3498db;
+  color: #3498db;
+}
+
+/* FORM */
+
+.form-wrapper .section{
+  padding: 0px 20px 30px 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff;
+  opacity: 0;
+  -webkit-transform: scale(1, 0);
+  -ms-transform: scale(1, 0);
+  -o-transform: scale(1, 0);
+  transform: scale(1, 0);
+  -webkit-transform-origin: top center;
+  -moz-transform-origin: top center;
+  -ms-transform-origin: top center;
+  -o-transform-origin: top center;
+  transform-origin: top center;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  text-align: center;
+  position: absolute;
+  width: 1450px;
+  margin-left:-20px;
+  min-height: 300px
+}
+
+.form-wrapper .section h3{
+  margin-bottom: 30px;
+}
+
+.form-wrapper .section.is-active{
+  opacity: 1;
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+.form-wrapper .button, .form-wrapper .submit{
+  background-color: #3498db;
+  display: inline-block;
+  padding: 8px 30px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px !important;
+  font-family: 'Open Sans', sans-serif !important;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.form-wrapper .submit{
+  border: none;
+  outline: none;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.form-wrapper input[type="text"],
+{
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #f2f2f2;
+    padding: 12px;
+    border-radius: 3px;
+    width: 250px;
+    font-size: 14px;
+}
+.form-wrapper input[type="password"] {
+    display: block;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #f1f1f1;
+    border: none;
+    width: 100%;
+    height: 20%;
+    outline: none;
+    font-size: 14px !important;
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.form-wrapper input[type="radio"]{
+  display: none;
+}
+
+.form-wrapper input[type="radio"] + label{
+  display: block;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+}
+
+.form-wrapper input[type="radio"] + label:before{
+  content: "✔";
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 100%;
+  background-color: #3498db;
+  color: #fff;
+  display: none;
+}
+
+.form-wrapper input[type="radio"]:checked + label:before{
+  display: block;
+}
+
+.form-wrapper input[type="radio"] + label h4{
+  margin: 15px;
+  color: #ccc;
+}
+
+.form-wrapper input[type="radio"]:checked + label{
+  border: 1px solid #3498db;
+}
+
+.form-wrapper input[type="radio"]:checked + label h4{
+  color: #3498db;
+}

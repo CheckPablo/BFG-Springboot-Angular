@@ -1,0 +1,133 @@
+﻿@using Entities.Models
+@model Entities.Models.Notification;
+
+
+
+
+@{
+    //var requisitionDetails = ViewData["QualificationName"];
+    var ntf = (Notification)ViewData["notificationMessage"];
+    Layout = "~/Views/Shared/Uniform.cshtml";
+}
+
+<html>
+<head>
+    <link rel="apple-touch-icon" sizes="76x76" href="~/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/assets/demo/demo.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/assets/demo/demo.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+    @*<link href="~/assets/demo/demo.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+
+
+
+</head>
+<body>
+    <div class="content">
+
+        <div class="container-fluid">
+
+
+            <div class="row">
+
+
+                <div class="col-md-12">
+                    <div class="card" style="font-family:'Times New Roman'">
+                        <div class="card-header card-header-primary" style="background-color: #e0f0ff">
+                            <h4 class="card-title">List Of Suppliers</h4>
+
+                        </div>
+                        <div class="card-body">
+                            <form method="post" asp-controller="Supplier" asp-action="Search">
+                                <div class="input-group">
+                                    <input id="searchTerm" class="form-control" type="text" name="searchTerm">
+
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                             Action
+                                            </th>
+                                            <th>
+                                              From
+                                            </th>
+
+                                            <th>
+                                              Action
+                                            </th>
+                                            <th>
+                                              Comment
+                                            </th>
+                                            <th>
+                                              DateCreated
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @*@foreach (var item in Model)*@
+                                            @if(ntf != null)
+                                        {
+                                            <tr>
+                                                <td>
+                                                   @ntf.Action
+                                                </td>
+                                                <td>
+                                                   @ntf.From
+                                                </td>
+
+                                                <td>
+                                                  @ntf.Action
+                                                </td>
+
+                                                <td>
+                                                    @ntf.Comment
+                                                </td>
+
+                                                <td>
+                                                    @ntf.DateCreated
+                                                </td>
+                                                @if(@ntf.Link != null  && @ntf.Link != "")
+                                                {
+                                            <td>
+                                                @*<a asp-controller="Requisition" asp-action="Details" asp-route-id="@ntf.RequisitionId">Details</a>*@
+                                                <a class="dropdown-item">@Html.ActionLink("Details", "Details", "Requisition", routeValues: new { @ntf.RequisitionId }, htmlAttributes: new { target = "_blank" })</a>
+
+                                            </td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
